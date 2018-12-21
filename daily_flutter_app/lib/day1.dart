@@ -10,9 +10,10 @@ class Day1Widget extends StatefulWidget {
 
 class Day1WidgetState extends State<Day1Widget> {
   String sampleText = "This is sample text line";
-  ImageProvider imageProvider = ImageProvider()
+
   @override
   Widget build(BuildContext context) {
+    delayAndReturn();
     // TODO: implement build
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -27,11 +28,35 @@ class Day1WidgetState extends State<Day1Widget> {
                 color: Color.fromARGB(0xff, 0x66, 0xcc, 0xff),
                 fontSize: 18)),
         Text("This is multi line text1\nThis is multi line text2"),
-        Image.asset("assets/landscape-3779159_640.jpg"),
+//        Image.asset("assets/landscape-3779159_640.jpg"),
         Image.asset("assets/rail-3678287_640.jpg", width: 300),
-        Image.network("https://www.google.com/logos/doodles/2018/the-geminid-meteor-shower-2018-5112685963247616.2-s.png"),
-        Image()
+        Image.network(
+            "https://www.google.com/logos/doodles/2018/the-geminid-meteor-shower-2018-5112685963247616.2-s.png"),
+        RaisedButton(
+          child: const Text('Test Raised Button'),
+          onPressed: () {
+            print("xxx");
+          },
+        ),
+        FlatButton(
+          child: const Text('Another Flat Button'),
+          onPressed: () {
+            print("flat button");
+          },
+        ),
       ],
     );
   }
 }
+
+Future<String> delayAndReturn() {
+  return Future.delayed(Duration(seconds: 2)).then((onValue) {
+//    return new Future(() {
+//      print("hhhhhhh");
+//    });
+    print("hhhhh");
+  });
+}
+
+const timeout = const Duration(seconds: 3);
+
