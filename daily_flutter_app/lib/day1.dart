@@ -38,10 +38,15 @@ class Day1WidgetState extends State<Day1Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        // 普通文字
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Day1"),
+      ),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          // 普通文字
 //        Text("This is text widget." + f.format(1)),
 //        Text("Hello variable. $sampleText"),
 //        Text("Hello text style",
@@ -52,50 +57,50 @@ class Day1WidgetState extends State<Day1Widget> {
 //                fontSize: 18)),
 //        Text("This is multi line text1\nThis is multi line text2"),
 //        Image.asset("assets/landscape-3779159_640.jpg"),
-        Image.asset("assets/rail-3678287_640.jpg", width: 300),
-        Image.network(
-            "https://www.google.com/logos/doodles/2018/the-geminid-meteor-shower-2018-5112685963247616.2-s.png"),
+          Image.asset("assets/rail-3678287_640.jpg", width: 300),
+          Image.network(
+              "https://www.google.com/logos/doodles/2018/the-geminid-meteor-shower-2018-5112685963247616.2-s.png"),
 //        Text(_minutesFormat.format(_minutes) +
 //            ":" +
 //            _secondsFormat.format(_seconds) +
 //            "." +
 //            _millisecondsFormat.format(_milliseconds / 100)),
-        Text(_minutes.toString().padLeft(2, '0') +
-            ":" +
-            _seconds.toString().padLeft(2, '0') +
-            "." +
-            (_milliseconds ~/ 10).toString().padLeft(2, '0')),
-        RaisedButton(
-          child: const Text("Start"),
-          onPressed: () {
-            if (_timer != null) {
-              _timer.cancel();
-            }
-            _timer = createTimer();
-          },
-        ),
-        RaisedButton(
-          child: const Text("Pause"),
-          onPressed: () {
-            if (_timer != null) {
-              _timer.cancel();
-            }
-          },
-        ),
-        RaisedButton(
-          child: const Text("Reset"),
-          onPressed: () {
-            setState(() {
+          Text(_minutes.toString().padLeft(2, '0') +
+              ":" +
+              _seconds.toString().padLeft(2, '0') +
+              "." +
+              (_milliseconds ~/ 10).toString().padLeft(2, '0')),
+          RaisedButton(
+            child: const Text("Start"),
+            onPressed: () {
               if (_timer != null) {
                 _timer.cancel();
               }
-              _allMilliseconds = 0;
-              _milliseconds = 0;
-              _seconds = 0;
-              _minutes = 0;
-            });
-          },
-        )
+              _timer = createTimer();
+            },
+          ),
+          RaisedButton(
+            child: const Text("Pause"),
+            onPressed: () {
+              if (_timer != null) {
+                _timer.cancel();
+              }
+            },
+          ),
+          RaisedButton(
+            child: const Text("Reset"),
+            onPressed: () {
+              setState(() {
+                if (_timer != null) {
+                  _timer.cancel();
+                }
+                _allMilliseconds = 0;
+                _milliseconds = 0;
+                _seconds = 0;
+                _minutes = 0;
+              });
+            },
+          )
 
 //        RaisedButton(
 //          child: const Text('Test Raised Button'),
@@ -122,7 +127,8 @@ class Day1WidgetState extends State<Day1Widget> {
 //            });
 //          },
 //        ),
-      ],
+        ],
+      )),
     );
   }
 }

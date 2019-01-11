@@ -8,21 +8,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Daily Flutter",
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Daily Flutter Home Page'),
-    );
+        title: "Daily Flutter",
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+        ),
+//      home: MyHomePage(title: 'Daily Flutter Home Page'),
+        home: DaysList());
   }
 }
 
@@ -110,6 +110,33 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class DaysList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Days List"),
+      ),
+      body: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(20.0),
+        children: <Widget>[
+          RaisedButton(
+            child: Text("Day1"),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Day1Widget()));
+            },
+          ),
+          RaisedButton(
+            child: Text("Day2"),
+            onPressed: () {},
+          )
+        ],
+      ),
     );
   }
 }
